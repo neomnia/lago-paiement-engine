@@ -2,6 +2,7 @@
 .DS_Store
 .env
 .env.development
+.env.railway.secrets
 .rsa_private.pem
 .vscode
 .zed
@@ -10,3 +11,7 @@
 /extra/ssl/nginx*
 /traefik/certs/*
 /deploy/letsencrypt
+
+# Railway secrets (ne jamais committer)
+.env.railway*
+railway-secrets.txt

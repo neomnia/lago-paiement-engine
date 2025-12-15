@@ -1,0 +1,20 @@
+# Configuration Railway pour build simple (images officielles)
+# Alternative à railway.toml si le build complet échoue
+
+[build]
+builder = "dockerfile"
+dockerfilePath = "Dockerfile.railway-simple"
+
+[deploy]
+startCommand = "./scripts/start.api.sh"
+restartPolicyType = "on_failure"
+restartPolicyMaxRetries = 10
+healthcheckPath = "/health"
+healthcheckTimeout = 300
+
+# Configuration du serveur
+[deploy.environmentVariables]
+PORT = "3000"
+RAILS_ENV = "production"
+RAILS_SERVE_STATIC_FILES = "true"
+RAILS_LOG_TO_STDOUT = "true"

@@ -1,0 +1,23 @@
+# Railway Configuration pour Lago
+# Documentation: https://docs.railway.app/deploy/config-as-code
+
+[build]
+# Utiliser le Dockerfile principal qui construit API + Front
+builder = "dockerfile"
+dockerfilePath = "docker/Dockerfile"
+
+[deploy]
+# Commande de démarrage (définie dans le Dockerfile)
+startCommand = "./runner.sh"
+restartPolicyType = "on_failure"
+restartPolicyMaxRetries = 10
+
+# Health check
+healthcheckPath = "/health"
+healthcheckTimeout = 300
+
+# Variables d'environnement (à configurer dans Railway Dashboard)
+# Ces variables doivent être définies dans l'interface Railway
+[deploy.environmentVariables]
+# DATABASE_URL sera fourni automatiquement par Railway si vous ajoutez un service PostgreSQL
+# REDIS_URL sera fourni automatiquement par Railway si vous ajoutez un service Redis
