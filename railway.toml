@@ -2,14 +2,14 @@
 # Documentation: https://docs.railway.app/deploy/config-as-code
 
 [build]
-# Utiliser le Dockerfile principal qui construit API + Front
-builder = "dockerfile"
-dockerfilePath = "docker/Dockerfile"
+# Utiliser le Dockerfile simplifié qui utilise l'image officielle
+builder = "DOCKERFILE"
+dockerfilePath = "Dockerfile.railway-simple"
 
 [deploy]
-# Commande de démarrage (définie dans le Dockerfile)
-startCommand = "./runner.sh"
-restartPolicyType = "on_failure"
+# Commande de démarrage
+startCommand = "./scripts/start.api.sh"
+restartPolicyType = "ON_FAILURE"
 restartPolicyMaxRetries = 10
 
 # Health check

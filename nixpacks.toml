@@ -1,0 +1,11 @@
+# Désactiver Nixpacks/Railpack - Forcer l'utilisation du Dockerfile
+# Ce fichier indique à Railway de NE PAS utiliser Railpack
+
+[phases.setup]
+nixPkgs = []
+
+[phases.build]
+cmds = ["echo 'Using Dockerfile instead of Nixpacks'"]
+
+[start]
+cmd = "echo 'This should not run - use Dockerfile instead'"
